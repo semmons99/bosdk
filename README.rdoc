@@ -1,0 +1,8 @@
+= Introduction
+
+This library allows for a Ruby centric approach to the Business Objects SDK.
+
+== Resources
+
+- Website: http://semmons99.github.com/bosdk
+- Git repository: http://github.com/semmons99/bosdk/tree/master
