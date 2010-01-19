@@ -12,11 +12,13 @@ module BOSDK
       # mocks
       @session_mgr = mock("ISessionMgr").as_null_object
       @session = mock("IEnterpriseSession").as_null_object
+      @infostore = mock("IInfoStore").as_null_object
+      @infoobjects = mock("IInfoObjects").as_null_object
 
       # stubs
-      CrystalEnterprise.should_receive(:getSessionMgr).with.and_return(@session_mgr)
+      CrystalEnterprise.should_receive(:getSessionMgr).and_return(@session_mgr)
       @session_mgr.should_receive(:logon).once.with('Administrator', '', 'cms', 'secEnterprise').and_return(@session)
-      @session.should_receive(:logoff).at_most(2).with.and_return
+      @session.should_receive(:getService).once.with('', 'InfoStore').and_return(@infostore)
 
       @es = EnterpriseSession.new('cms', 'Administrator', '')
     end
@@ -26,18 +28,38 @@ module BOSDK
     end
 
     specify "#connected? returns 'false' when not connected to a CMS" do
+      @session.should_receive(:logoff).once.with.and_return
+
       @es.disconnect
       @es.connected?.should be_false
     end
 
     specify "#disconnect should disconnect from the CMS" do
+      @session.should_receive(:logoff).once.with.and_return
+
       @es.disconnect
       @es.connected?.should be_false
     end
 
     specify "#disconnect shouldn't raise an error when not connected" do
-      @es.disconnect
-      lambda{@es.disconnect}.should_not raise_exception
+      @session.should_receive(:logoff).once.with.and_return
+
+      lambda{2.times{ @es.disconnect }}.should_not raise_exception
+    end
+
+    specify "#query should send the statement to the underlying InfoStore" do
+      stmt = 'SELECT * FROM CI_infoobjectS'
+      @infostore.should_receive(:query).once.with(stmt)
+
+      results = @es.query(stmt)
+    end
+
+    specify "#query should return the IInfoObjects" do
+      stmt = 'SELECT * FROM CI_INFOOBJECTS'
+      @infostore.should_receive(:query).once.with(stmt).and_return(@infoobjects)
+
+      results = @es.query(stmt)
+      results.should == @infoobjects
     end
   end
 end

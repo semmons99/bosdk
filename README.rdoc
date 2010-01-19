@@ -7,22 +7,26 @@ A JRuby wrapper for the Business Objects SDK
 == Requirements
 
 - The Business Objects Java SDK
-- An environment variable 'BOE_JAVA_LIB' pointing to the Business Objects Java SDK directory
+- An environment variable 'BOE_JAVA_LIB' pointing to the Business Objects Java
+  SDK directory
 - JRuby >= 1.4.0
 
 == Usage
 
  require 'bosdk'
- session = BOSDK::EnterpriseSession.new 'cms', 'Administrator', ''
+ boe = BOSDK::EnterpriseSession.new('cms', 'Administrator', '')
 
- ...do stuff with 'session.boe'...
+ stmt = "SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'"
+ boe.query(stmt).each do |obj|
+   puts obj.title
+ end
 
- session.disconnect if session.connected?
+ boe.disconnect
 
 == Future Enhancements
 
-In the future there will be wrappers around the more commonly used portions of the SDK,
-including IInfoStore and IInfoObject.
+In the future there may be wrappers around the more commonly used portions of
+the SDK, such as IInfoObject.
 
 == Resources
 
