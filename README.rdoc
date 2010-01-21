@@ -1,4 +1,4 @@
-= BOSDK.gem
+= BOSDK.gem v1.0.0
 
 == Description
 
@@ -15,14 +15,24 @@ A JRuby wrapper for the Business Objects SDK
 
  require 'bosdk'
  include BOSDK
- boe = EnterpriseSession.new('cms', 'Administrator', '')
+ session = EnterpriseSession.new('cms', 'Administrator', '')
 
  stmt = "SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'"
- boe.query(stmt).each do |obj|
+ session.query(stmt).each do |obj|
    puts obj.path
  end
 
- boe.disconnect
+ session.disconnect
+
+Alternatively you can use the #connect closure.
+
+ require 'bosdk'
+ BOSDK.connect('cms', 'Administrator', '') do |session|
+   stmt = "SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'"
+   session.query(stmt).each do |obj|
+     puts obj.path
+   end
+ end
 
 == Resources
 

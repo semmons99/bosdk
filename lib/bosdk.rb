@@ -26,3 +26,12 @@ include_class "com.crystaldecisions.sdk.framework.CrystalEnterprise"
 
 require 'bosdk/enterprise_session'
 require 'bosdk/info_object'
+
+module BOSDK
+  # A closure over EnterpriseSession
+  def BOSDK.connect(cms, username, password, &block)
+    session = EnterpriseSession.new(cms, username, password)
+    yield session
+    session.disconnect
+  end
+end
