@@ -43,20 +43,20 @@
         <div id='text'>
           <div id='description'>
             <p>
-            Creates a wrapper around the Business Objects Java SDK
+            Creates a wrapper around the Business Objects Java SDK.
             </p>
           </div>
           <div id='method-list'>
             <h2>Methods</h2>
             <h3>public class</h3>
             <ol>
-              <li><a href="#M000001">new</a></li>
+              <li><a href="#M000008">new</a></li>
             </ol>
             <h3>public instance</h3>
             <ol>
-              <li><a href="#M000002">connected?</a></li>
-              <li><a href="#M000003">disconnect</a></li>
-              <li><a href="#M000004">query</a></li>
+              <li><a href="#M000009">connected?</a></li>
+              <li><a href="#M000010">disconnect</a></li>
+              <li><a href="#M000011">query</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -85,8 +85,8 @@
             </div>
             <div id='methods'>
               <h2>Public class methods</h2>
-              <div class='method public-class' id='method-M000001'>
-                <a name='M000001'></a>
+              <div class='method public-class' id='method-M000008'>
+                <a name='M000008'></a>
                 <div class='synopsis'>
                   <span class='name'>new</span>
                   <span class='arguments'>(cms, username, password)</span>
@@ -102,33 +102,33 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000001-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 14</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)&#x000A;      <span class="ruby-ivar">@session</span> = <span class="ruby-constant">CrystalEnterprise</span>.<span class="ruby-identifier">getSessionMgr</span>.<span class="ruby-identifier">logon</span>(<span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">cms</span>, <span class="ruby-value str">'secEnterprise'</span>)&#x000A;      <span class="ruby-ivar">@infostore</span> = <span class="ruby-ivar">@session</span>.<span class="ruby-identifier">getService</span>(<span class="ruby-value str">''</span>, <span class="ruby-value str">'InfoStore'</span>)&#x000A;      <span class="ruby-ivar">@connected</span> = <span class="ruby-keyword kw">true</span>&#x000A;&#x000A;      <span class="ruby-identifier">at_exit</span> { <span class="ruby-identifier">disconnect</span> }&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000008-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 16</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)&#x000A;      <span class="ruby-ivar">@session</span> = <span class="ruby-constant">CrystalEnterprise</span>.<span class="ruby-identifier">getSessionMgr</span>.<span class="ruby-identifier">logon</span>(<span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">cms</span>, <span class="ruby-value str">'secEnterprise'</span>)&#x000A;      <span class="ruby-ivar">@infostore</span> = <span class="ruby-ivar">@session</span>.<span class="ruby-identifier">getService</span>(<span class="ruby-value str">''</span>, <span class="ruby-value str">'InfoStore'</span>)&#x000A;      <span class="ruby-ivar">@connected</span> = <span class="ruby-keyword kw">true</span>&#x000A;&#x000A;      <span class="ruby-identifier">at_exit</span> { <span class="ruby-identifier">disconnect</span> }&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <h2>Public instance methods</h2>
-              <div class='method public-instance' id='method-M000002'>
-                <a name='M000002'></a>
+              <div class='method public-instance' id='method-M000009'>
+                <a name='M000009'></a>
                 <div class='synopsis'>
                   <span class='name'>connected?</span>
                   <span class='arguments'>()</span>
                 </div>
                 <div class='description'>
                   <p>
-                  Returned true/false if connected to the CMS.
+                  Returns true/false if connected to the CMS.
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000002-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000002-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 23</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connected?</span>&#x000A;      <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@connected</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000009-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 25</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">connected?</span>&#x000A;      <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@connected</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000003'>
-                <a name='M000003'></a>
+              <div class='method public-instance' id='method-M000010'>
+                <a name='M000010'></a>
                 <div class='synopsis'>
                   <span class='name'>disconnect</span>
                   <span class='arguments'>()</span>
@@ -139,28 +139,29 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000003-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000010-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000003-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 28</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">disconnect</span>&#x000A;      <span class="ruby-ivar">@session</span>.<span class="ruby-identifier">logoff</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">connected?</span>&#x000A;      <span class="ruby-ivar">@session</span> = <span class="ruby-keyword kw">nil</span>&#x000A;      <span class="ruby-ivar">@connected</span> = <span class="ruby-keyword kw">false</span>&#x000A;      <span class="ruby-keyword kw">nil</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000010-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 30</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">disconnect</span>&#x000A;      <span class="ruby-ivar">@session</span>.<span class="ruby-identifier">logoff</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">connected?</span>&#x000A;      <span class="ruby-ivar">@session</span> = <span class="ruby-keyword kw">nil</span>&#x000A;      <span class="ruby-ivar">@connected</span> = <span class="ruby-keyword kw">false</span>&#x000A;      <span class="ruby-keyword kw">nil</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000004'>
-                <a name='M000004'></a>
+              <div class='method public-instance' id='method-M000011'>
+                <a name='M000011'></a>
                 <div class='synopsis'>
                   <span class='name'>query</span>
                   <span class='arguments'>(stmt)</span>
                 </div>
                 <div class='description'>
                   <p>
-                  Queries the InfoStore with the provided statement.
+                  Queries the InfoStore with the provided statement, returning an Array of
+                  InfoObject(s).
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000011-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000004-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 36</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query</span>(<span class="ruby-identifier">stmt</span>)&#x000A;      <span class="ruby-ivar">@infostore</span>.<span class="ruby-identifier">query</span>(<span class="ruby-identifier">stmt</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000011-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 39</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query</span>(<span class="ruby-identifier">stmt</span>)&#x000A;      <span class="ruby-ivar">@infostore</span>.<span class="ruby-identifier">query</span>(<span class="ruby-identifier">stmt</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-constant">InfoObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">o</span>)}&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>

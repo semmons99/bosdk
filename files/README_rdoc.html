@@ -31,7 +31,7 @@
         </div>
         <div class='last-update'>
           Last Update:
-          <span class='datetime'>Tue Jan 19 14:21:12 -0500 2010</span>
+          <span class='datetime'>Thu Jan 21 10:36:03 -0500 2010</span>
         </div>
       </div>
       <div id='content'>
@@ -56,12 +56,7 @@
             </li>
             </ul>
             <h2>Usage</h2>
-            <pre>require 'bosdk'&#x000A;boe = BOSDK::EnterpriseSession.new('cms', 'Administrator', '')&#x000A;&#x000A;stmt = &quot;SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'&quot;&#x000A;boe.query(stmt).each do |obj|&#x000A;  puts obj.title&#x000A;end&#x000A;&#x000A;boe.disconnect</pre>
-            <h2>Future Enhancements</h2>
-            <p>
-            In the future there may be wrappers around the more commonly used portions
-            of the SDK, such as IInfoObject.
-            </p>
+            <pre>require 'bosdk'&#x000A;include BOSDK&#x000A;boe = EnterpriseSession.new('cms', 'Administrator', '')&#x000A;&#x000A;stmt = &quot;SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'&quot;&#x000A;boe.query(stmt).each do |obj|&#x000A;  puts obj.path&#x000A;end&#x000A;&#x000A;boe.disconnect</pre>
             <h2>Resources</h2>
             <ul>
             <li>Website: <a
