@@ -31,6 +31,7 @@ module BOSDK
       title <=> other_infoobject.title
     end
 
+    # Forwards method to underlying IInfoObject and stores the results
     def method_missing(method, *args)
       eval "return @#{method.to_s}" if instance_variables.include?("@#{method.to_s}")
       if @obj.respond_to?(method)
@@ -39,6 +40,7 @@ module BOSDK
       super
     end
 
+    # Returns true if underlying IInfoObject#respond_to? is true
     def respond_to?(method)
       @obj.respond_to?(method) || super
     end
