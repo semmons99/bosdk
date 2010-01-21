@@ -14,19 +14,15 @@ A JRuby wrapper for the Business Objects SDK
 == Usage
 
  require 'bosdk'
- boe = BOSDK::EnterpriseSession.new('cms', 'Administrator', '')
+ include BOSDK
+ boe = EnterpriseSession.new('cms', 'Administrator', '')
 
  stmt = "SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'"
  boe.query(stmt).each do |obj|
-   puts obj.title
+   puts obj.path
  end
 
  boe.disconnect
-
-== Future Enhancements
-
-In the future there may be wrappers around the more commonly used portions of
-the SDK, such as IInfoObject.
 
 == Resources
 

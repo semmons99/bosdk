@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "bosdk"
-  s.version = "0.1.1"
+  s.version = "0.1.2"
   
   s.author = "Shane Emmons"
   s.description = "A JRuby wrapper for the Business Objects Java SDK"
@@ -9,7 +9,9 @@ Gem::Specification.new do |s|
     "README.rdoc", "MIT-LICENSE", "bosdk.gemspec", "Rakefile",
     "lib/bosdk.rb",
     "lib/bosdk/enterprise_session.rb",
+    "lib/bosdk/info_object.rb",
     "spec/enterprise_session_spec.rb",
+    "spec/info_object_spec.rb",
   ]
 
   s.homepage = "http://semmons99.github.com/bosdk"

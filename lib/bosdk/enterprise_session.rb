@@ -1,3 +1,5 @@
+require 'bosdk/info_object'
+
 module BOSDK
   # Creates a wrapper around the Business Objects Java SDK.
   class EnterpriseSession
@@ -32,9 +34,10 @@ module BOSDK
       nil
     end
 
-    # Queries the InfoStore with the provided statement.
+    # Queries the InfoStore with the provided statement, returning an Array of
+    # InfoObject(s).
     def query(stmt)
-      @infostore.query(stmt)
+      @infostore.query(stmt).map{|o| InfoObject.new(o)}
     end
   end
 end

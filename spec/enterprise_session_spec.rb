@@ -49,17 +49,9 @@ module BOSDK
 
     specify "#query should send the statement to the underlying InfoStore" do
       stmt = 'SELECT * FROM CI_infoobjectS'
-      @infostore.should_receive(:query).once.with(stmt)
+      @infostore.should_receive(:query).once.with(stmt).and_return([])
 
-      results = @es.query(stmt)
-    end
-
-    specify "#query should return the IInfoObjects" do
-      stmt = 'SELECT * FROM CI_INFOOBJECTS'
-      @infostore.should_receive(:query).once.with(stmt).and_return(@infoobjects)
-
-      results = @es.query(stmt)
-      results.should == @infoobjects
+      @es.query(stmt)
     end
   end
 end
