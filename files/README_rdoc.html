@@ -31,13 +31,13 @@
         </div>
         <div class='last-update'>
           Last Update:
-          <span class='datetime'>Thu Jan 21 10:36:03 -0500 2010</span>
+          <span class='datetime'>Thu Jan 21 11:43:28 -0500 2010</span>
         </div>
       </div>
       <div id='content'>
         <div id='text'>
           <div id='description'>
-            <h1>BOSDK.gem</h1>
+            <h1>BOSDK.gem v1.0.0</h1>
             <h2>Description</h2>
             <p>
             A JRuby wrapper for the Business Objects SDK
@@ -56,7 +56,11 @@
             </li>
             </ul>
             <h2>Usage</h2>
-            <pre>require 'bosdk'&#x000A;include BOSDK&#x000A;boe = EnterpriseSession.new('cms', 'Administrator', '')&#x000A;&#x000A;stmt = &quot;SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'&quot;&#x000A;boe.query(stmt).each do |obj|&#x000A;  puts obj.path&#x000A;end&#x000A;&#x000A;boe.disconnect</pre>
+            <pre>require 'bosdk'&#x000A;include BOSDK&#x000A;session = EnterpriseSession.new('cms', 'Administrator', '')&#x000A;&#x000A;stmt = &quot;SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'&quot;&#x000A;session.query(stmt).each do |obj|&#x000A;  puts obj.path&#x000A;end&#x000A;&#x000A;session.disconnect</pre>
+            <p>
+            Alternatively you can use the connect closure.
+            </p>
+            <pre>require 'bosdk'&#x000A;BOSDK.connect('cms', 'Administrator', '') do |session|&#x000A;  stmt = &quot;SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'&quot;&#x000A;  session.query(stmt).each do |obj|&#x000A;    puts obj.path&#x000A;  end&#x000A;end</pre>
             <h2>Resources</h2>
             <ul>
             <li>Website: <a

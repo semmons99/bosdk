@@ -36,6 +36,9 @@
           <li class='other'>
             <a href="../files/lib/bosdk/enterprise_session_rb.html">lib/bosdk/enterprise_session.rb</a>
           </li>
+          <li class='other'>
+            <a href="../files/lib/bosdk_rb.html">lib/bosdk.rb</a>
+          </li>
           <li>
             <a class='show' href='#' onclick='this.parentNode.parentNode.className += " expanded"; this.parentNode.removeChild(this); return false'>show all</a>
           </li>
@@ -43,11 +46,39 @@
       </div>
       <div id='content'>
         <div id='text'>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>public class</h3>
+            <ol>
+              <li><a href="#M000001">connect</a></li>
+            </ol>
+          </div>
           <div id='section'>
             <div id='class-list'>
               <h2>Classes and Modules</h2>
               Class <a href="BOSDK/EnterpriseSession.html" class="link">BOSDK::EnterpriseSession</a><br />
               Class <a href="BOSDK/InfoObject.html" class="link">BOSDK::InfoObject</a><br />
+            </div>
+            <div id='methods'>
+              <h2>Public class methods</h2>
+              <div class='method public-class' id='method-M000001'>
+                <a name='M000001'></a>
+                <div class='synopsis'>
+                  <span class='name'>connect</span>
+                  <span class='arguments'>(cms, username, password) {|session| ...}</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  A closure over <a href="BOSDK/EnterpriseSession.html">EnterpriseSession</a>
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000001-source'><span class="ruby-comment cmt"># File lib/bosdk.rb, line 32</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">BOSDK</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">session</span> = <span class="ruby-constant">EnterpriseSession</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)&#x000A;    <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">session</span>&#x000A;    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">disconnect</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
             </div>
           </div>
         </div>
