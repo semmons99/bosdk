@@ -1,5 +1,5 @@
 module BOSDK
-  # Creates a wrapper around the Business Objects Java SDK
+  # Creates a wrapper around the Business Objects Java SDK.
   class EnterpriseSession
     # The underlying IEnterpriseSession
     attr_reader :session
@@ -19,7 +19,7 @@ module BOSDK
       at_exit { disconnect }
     end
 
-    # Returned true/false if connected to the CMS.
+    # Returns true/false if connected to the CMS.
     def connected?
       return @connected
     end
