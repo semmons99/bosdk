@@ -42,7 +42,8 @@ module BOSDK
     # Queries the InfoStore with the provided statement, returning an Array of
     # InfoObject(s).
     def query(stmt)
-      @infostore.query(stmt).map{|o| InfoObject.new(o)}
+      sql = stmt.match(/^(path|query|cuid):\/\//i) ? path_to_sql(stmt) : stmt
+      @infostore.query(sql).map{|o| InfoObject.new(o)}
     end
   end
 end

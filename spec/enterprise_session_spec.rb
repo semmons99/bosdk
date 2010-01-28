@@ -62,10 +62,40 @@ module BOSDK
     end
 
     specify "#query should send the statement to the underlying InfoStore" do
-      stmt = 'SELECT * FROM CI_infoobjectS'
+      stmt = 'SELECT * FROM CI_INFOOBJECTS'
       @infostore.should_receive(:query).once.with(stmt).and_return([])
 
       @es.query(stmt)
+    end
+
+    specify "#query should convert a path:// query to sql before execution" do
+      path_query = 'path://SystemObjects/Users/Administrator@SI_ID'
+      stmt = "SELECT * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User' AND SI_NAME='Administator'"
+
+      @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
+      @infostore.should_receive(:query).once.with(stmt).and_return([])
+
+      @es.query(path_query)
+    end
+
+    specify "#query should convert a query:// query to sql before execution" do
+      path_query = 'query://{SELECT * FROM CI_INFOOBJECTS}'
+      stmt = 'SELECT * FROM CI_INFOOBJECTS'
+
+      @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
+      @infostore.should_receive(:query).once.with(stmt).and_return([])
+
+      @es.query(path_query)
+    end
+
+    specify "#query should convert a cuid:// query to sql before execution" do
+      path_query = 'cuid://ABC'
+      stmt = "SELECT * FROM CI_INFOOBJECTS WHERE SI_CUID='ABC'"
+
+      @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
+      @infostore.should_receive(:query).once.with(stmt).and_return([])
+
+      @es.query(path_query)
     end
   end
 end
