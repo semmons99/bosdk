@@ -56,7 +56,8 @@
             <ol>
               <li><a href="#M000010">connected?</a></li>
               <li><a href="#M000011">disconnect</a></li>
-              <li><a href="#M000012">query</a></li>
+              <li><a href="#M000012">path_to_sql</a></li>
+              <li><a href="#M000013">query</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -148,6 +149,25 @@
               <div class='method public-instance' id='method-M000012'>
                 <a name='M000012'></a>
                 <div class='synopsis'>
+                  <span class='name'>path_to_sql</span>
+                  <span class='arguments'>(path_stmt)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Converts &#8216;path://&#8217;, &#8216;query://&#8217; and
+                  &#8216;cuid://&#8217; special forms to a SDK query
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000012-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 38</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">path_to_sql</span>(<span class="ruby-identifier">path_stmt</span>)&#x000A;      <span class="ruby-ivar">@infostore</span>.<span class="ruby-identifier">getStatelessPageInfo</span>(<span class="ruby-identifier">path_stmt</span>, <span class="ruby-constant">PagingQueryOptions</span>.<span class="ruby-identifier">new</span>).<span class="ruby-identifier">getPageSQL</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000013'>
+                <a name='M000013'></a>
+                <div class='synopsis'>
                   <span class='name'>query</span>
                   <span class='arguments'>(stmt)</span>
                 </div>
@@ -158,10 +178,10 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000013-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000012-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 39</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query</span>(<span class="ruby-identifier">stmt</span>)&#x000A;      <span class="ruby-ivar">@infostore</span>.<span class="ruby-identifier">query</span>(<span class="ruby-identifier">stmt</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-constant">InfoObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">o</span>)}&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000013-source'><span class="ruby-comment cmt"># File lib/bosdk/enterprise_session.rb, line 44</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">query</span>(<span class="ruby-identifier">stmt</span>)&#x000A;      <span class="ruby-identifier">sql</span> = <span class="ruby-identifier">stmt</span>.<span class="ruby-identifier">match</span>(<span class="ruby-regexp re">/^(path|query|cuid):\/\//i</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">path_to_sql</span>(<span class="ruby-identifier">stmt</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">stmt</span>&#x000A;      <span class="ruby-ivar">@infostore</span>.<span class="ruby-identifier">query</span>(<span class="ruby-identifier">sql</span>).<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span> <span class="ruby-constant">InfoObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">o</span>)}&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>
