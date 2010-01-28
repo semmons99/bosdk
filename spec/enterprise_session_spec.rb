@@ -2,6 +2,7 @@
 include Java
 Dir.glob(ENV["BOE_JAVA_LIB"] + "/*.jar").each {|jar| require jar}
 include_class "com.crystaldecisions.sdk.framework.CrystalEnterprise"
+include_class "com.crystaldecisions.sdk.uri.PagingQueryOptions"
 
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 require 'bosdk/enterprise_session'
@@ -45,6 +46,19 @@ module BOSDK
       @session.should_receive(:logoff).once.with.and_return
 
       lambda{2.times{ @es.disconnect }}.should_not raise_exception
+    end
+
+    specify "#path_to_sql should convert a path query to an sql query" do
+      path_query = 'path://SystemObjects/Users/Administrator@SI_ID'
+      stmt = "SELECT SI_ID FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User' AND SI_NAME='Administrator'"
+      
+      @stateless_page_info = mock("IStatelessPageInfo").as_null_object
+
+      PagingQueryOptions.should_receive(:new).once.with
+      @infostore.should_receive(:getStatelessPageInfo).once.with(path_query, nil).and_return(@stateless_page_info)
+      @stateless_page_info.should_receive(:getPageSQL).once.with.and_return(stmt)
+
+      @es.path_to_sql(path_query).should == stmt
     end
 
     specify "#query should send the statement to the underlying InfoStore" do

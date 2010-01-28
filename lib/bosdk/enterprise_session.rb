@@ -34,6 +34,11 @@ module BOSDK
       nil
     end
 
+    # Converts 'path://', 'query://' and 'cuid://' special forms to a SDK query
+    def path_to_sql(path_stmt)
+      @infostore.getStatelessPageInfo(path_stmt, PagingQueryOptions.new).getPageSQL
+    end
+
     # Queries the InfoStore with the provided statement, returning an Array of
     # InfoObject(s).
     def query(stmt)
