@@ -1,4 +1,4 @@
-= BOSDK.gem v1.0.1
+= BOSDK.gem
 
 == Description
 

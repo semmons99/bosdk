@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "bosdk"
-  s.version = "1.0.1"
+  s.version = "1.0.2"
   
   s.author = "Shane Emmons"
   s.description = "A JRuby wrapper for the Business Objects Java SDK"
