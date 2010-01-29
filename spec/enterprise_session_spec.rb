@@ -1,22 +1,16 @@
 # encoding: utf-8
-include Java
-Dir.glob(ENV["BOE_JAVA_LIB"] + "/*.jar").each {|jar| require jar}
-include_class "com.crystaldecisions.sdk.framework.CrystalEnterprise"
-include_class "com.crystaldecisions.sdk.uri.PagingQueryOptions"
-
 $LOAD_PATH.unshift(File.expand_path(File.dirname(__FILE__) + "/../lib"))
 require 'bosdk/enterprise_session'
 
 module BOSDK
   describe EnterpriseSession do
     before(:each) do
-      # mocks
       @session_mgr = mock("ISessionMgr").as_null_object
       @session = mock("IEnterpriseSession").as_null_object
       @infostore = mock("IInfoStore").as_null_object
       @infoobjects = mock("IInfoObjects").as_null_object
 
-      # stubs
+      class CrystalEnterprise; end
       CrystalEnterprise.should_receive(:getSessionMgr).at_least(1).with.and_return(@session_mgr)
       @session_mgr.should_receive(:logon).at_least(1).with('Administrator', '', 'cms', 'secEnterprise').and_return(@session)
       @session.should_receive(:getService).at_least(1).with('', 'InfoStore').and_return(@infostore)
@@ -58,6 +52,7 @@ module BOSDK
       
       @stateless_page_info = mock("IStatelessPageInfo").as_null_object
 
+      class PagingQueryOptions; end
       PagingQueryOptions.should_receive(:new).once.with
       @infostore.should_receive(:getStatelessPageInfo).once.with(path_query, nil).and_return(@stateless_page_info)
       @stateless_page_info.should_receive(:getPageSQL).once.with.and_return(stmt)
