@@ -10,8 +10,10 @@ Gem::Specification.new do |s|
     "lib/bosdk.rb",
     "lib/bosdk/enterprise_session.rb",
     "lib/bosdk/info_object.rb",
+    "lib/bosdk/webi_report_engine.rb",
     "spec/enterprise_session_spec.rb",
     "spec/info_object_spec.rb",
+    "spec/webi_report_engine_spec.rb",
   ]
 
   s.homepage = "http://semmons99.github.com/bosdk"

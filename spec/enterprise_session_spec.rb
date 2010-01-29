@@ -17,11 +17,15 @@ module BOSDK
       @infoobjects = mock("IInfoObjects").as_null_object
 
       # stubs
-      CrystalEnterprise.should_receive(:getSessionMgr).and_return(@session_mgr)
-      @session_mgr.should_receive(:logon).once.with('Administrator', '', 'cms', 'secEnterprise').and_return(@session)
-      @session.should_receive(:getService).once.with('', 'InfoStore').and_return(@infostore)
+      CrystalEnterprise.should_receive(:getSessionMgr).at_least(1).with.and_return(@session_mgr)
+      @session_mgr.should_receive(:logon).at_least(1).with('Administrator', '', 'cms', 'secEnterprise').and_return(@session)
+      @session.should_receive(:getService).at_least(1).with('', 'InfoStore').and_return(@infostore)
 
       @es = EnterpriseSession.new('cms', 'Administrator', '')
+    end
+
+    specify "#new should accept an optional locale setting" do
+      EnterpriseSession.new('cms', 'Administrator', '', :locale => 'en_CA')
     end
 
     specify "#connected? returns 'true' when connected to a CMS" do
@@ -96,6 +100,34 @@ module BOSDK
       @infostore.should_receive(:query).once.with(stmt).and_return([])
 
       @es.query(path_query)
+    end
+
+    specify "#open_webi should create a WebiReportEngine and call #open" do
+      @webi_report_engine = mock("WebiReportEngine").as_null_object
+      class WebiReportEngine; end
+      WebiReportEngine.should_receive(:new).once.with(@session, 'en_US').and_return(@webi_report_engine)
+      @webi_report_engine.should_receive(:open).once.with("1234")
+
+      @es.open_webi("1234")
+    end
+
+    specify "#open_webi should only create a WebiReportEngine once" do
+      @webi_report_engine = mock("WebiReportEngine").as_null_object
+      class WebiReportEngine; end
+      WebiReportEngine.should_receive(:new).once.with(@session, 'en_US').and_return(@webi_report_engine)
+      @webi_report_engine.should_receive(:open).twice.with("1234")
+
+      2.times{@es.open_webi("1234")}
+    end
+
+    specify "#open_webi should pass any specified locale" do
+      @webi_report_engine = mock("WebiReportEngine").as_null_object
+      class WebiReportEngine; end
+      WebiReportEngine.should_receive(:new).once.with(@session, 'en_CA').and_return(@webi_report_engine)
+      @webi_report_engine.should_receive(:open).once.with("1234")
+
+      es = EnterpriseSession.new('cms', 'Administrator', '', :locale => 'en_CA')
+      es.open_webi("1234")
     end
   end
 end

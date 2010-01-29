@@ -1,4 +1,5 @@
 require 'bosdk/info_object'
+require 'bosdk/webi_report_engine'
 
 module BOSDK
   # Creates a wrapper around the Business Objects Java SDK.
@@ -13,10 +14,11 @@ module BOSDK
     #  EnterpriseSession.new('cms', 'Administrator', '')
     #
     # Automatically calls disconnect when cleaned up.
-    def initialize(cms, username, password)
+    def initialize(cms, username, password, options = Hash.new)
       @session = CrystalEnterprise.getSessionMgr.logon(username, password, cms, 'secEnterprise')
       @infostore = @session.getService('', 'InfoStore')
       @connected = true
+      @locale = options[:locale] || 'en_US'
 
       at_exit { disconnect }
     end
@@ -44,6 +46,12 @@ module BOSDK
     def query(stmt)
       sql = stmt.match(/^(path|query|cuid):\/\//i) ? path_to_sql(stmt) : stmt
       @infostore.query(sql).map{|o| InfoObject.new(o)}
+    end
+
+    # Open a Webi document from the provided docid
+    def open_webi(docid)
+      @webi_report_engine ||= WebiReportEngine.new(@session, @locale)
+      @webi_report_engine.open(docid)
     end
   end
 end

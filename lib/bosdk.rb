@@ -24,9 +24,11 @@ include Java
 Dir.glob(ENV["BOE_JAVA_LIB"] + "/*.jar").each{|jar| require jar}
 include_class "com.crystaldecisions.sdk.framework.CrystalEnterprise"
 include_class "com.crystaldecisions.sdk.uri.PagingQueryOptions"
+include_class "com.businessobjects.rebean.wi.ReportEngines"
 
 require 'bosdk/enterprise_session'
 require 'bosdk/info_object'
+require 'bosdk/webi_report_engine'
 
 module BOSDK
   # A closure over EnterpriseSession
