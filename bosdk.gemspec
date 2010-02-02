@@ -7,6 +7,7 @@ Gem::Specification.new do |s|
   s.email = "semmons99@gmail.com"
   s.files = [
     "README.rdoc", "MIT-LICENSE", "bosdk.gemspec", "Rakefile",
+    "bin/boirb",
     "lib/bosdk.rb",
     "lib/bosdk/enterprise_session.rb",
     "lib/bosdk/info_object.rb",
@@ -15,6 +16,9 @@ Gem::Specification.new do |s|
     "spec/info_object_spec.rb",
     "spec/webi_report_engine_spec.rb",
   ]
+  s.bindir = "bin"
+  s.executables = ["boirb"]
+  s.default_executable = "boirb"
 
   s.homepage = "http://semmons99.github.com/bosdk"
   s.summary = "JRuby Business Object Java SDK wrapper"

@@ -1,0 +1,52 @@
+#!/usr/bin/env jruby
+
+require 'irb'
+
+module IRB
+  def self.start_session(binding)
+    IRB.setup(nil)
+
+    workspace = WorkSpace.new(binding)
+
+    if @CONF[:SCRIPT]
+      irb = Irb.new(workspace, @CONF[:SCRIPT])
+    else
+      irb = Irb.new(workspace)
+    end
+
+    @CONF[:IRB_RC].call(irb.context) if @CONF[:IRB_RC]
+    @CONF[:MAIN_CONTEXT] = irb.context
+
+    trap("SIGINT") do
+      irb.signal_handle
+    end
+
+    catch(:IRB_EXIT) do
+      irb.eval_input
+    end
+  end
+end
+
+require 'bosdk'
+
+def connect(cms, username, password, options = Hash.new)
+  @boe = BOSDK::EnterpriseSession.new(cms, username, password, options)
+end
+
+def connected?
+  @boe and @boe.connected?
+end
+
+def disconnect
+  @boe.disconnect if connected?
+end
+
+def query(stmt)
+  @boe.query(stmt) if connected?
+end
+
+def open_webi(docid)
+  @boe.open_webi(docid) if connected?
+end
+
+IRB.start_session(Kernel.binding)
