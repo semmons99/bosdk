@@ -34,7 +34,27 @@ Alternatively you can use the #connect closure.
    end
  end
 
+== BOIRB
+
+The library ships with an extension to the standard irb shell that connects you
+to a cms and gives you a handful of helpful shortcuts.
+ 
+ connect(cms, username, password, options = Hash.new)
+Creates a new EnterpriseSession and binds it to @boe.
+
+ connected?
+Tests whether @boe is connected to a cms.
+
+ disconnect
+Disconnects @boe from the cms.
+
+ query(stmt)
+Runs the provided query on @boe and returns the resulting InfoObject array.
+
+ open(docid)
+Opens the specified InfoObject using a ReportEngine and returns the doc handle.
+
 == Resources
 
 - Website: http://semmons99.github.com/bosdk
-- Git Repo: http://github.com/semmons99/bosdk/tree/master
+- Git Repo: http://github.com/semmons99/bosdk
