@@ -32,8 +32,8 @@ require 'bosdk/webi_report_engine'
 
 module BOSDK
   # A closure over EnterpriseSession
-  def BOSDK.connect(cms, username, password, &block)
-    session = EnterpriseSession.new(cms, username, password)
+  def BOSDK.connect(cms, username, password, options = Hash.new, &block)
+    session = EnterpriseSession.new(cms, username, password, options)
     yield session
     session.disconnect
   end

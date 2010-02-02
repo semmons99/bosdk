@@ -7,10 +7,10 @@ module BOSDK
     specify "#connect wraps EnterpriseSession#new in a closure" do
       es = mock("EnterpriseSession").as_null_object
       class EnterpriseSession; end
-      EnterpriseSession.should_receive(:new).once.with('cms', 'Administrator', '').and_return(es)
+      EnterpriseSession.should_receive(:new).once.with('cms', 'Administrator', '', {:locale => "en_US"}).and_return(es)
       es.should_receive(:disconnect).once.with.and_return
 
-      BOSDK.connect('cms', 'Administrator', '') do |session|
+      BOSDK.connect('cms', 'Administrator', '', :locale => "en_US") do |session|
         session.should == es
       end
     end
