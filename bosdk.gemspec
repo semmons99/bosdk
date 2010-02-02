@@ -22,4 +22,6 @@ Gem::Specification.new do |s|
   s.requirements = "An environment variable 'BOE_JAVA_LIB' pointing to the Business Objects Java SDK directory"
   s.has_rdoc = true
   s.extra_rdoc_files = ["README.rdoc", "MIT-LICENSE"]
+  s.add_development_dependency("rspec", ">= 1.3.0")
+  s.add_development_dependency("hanna", ">= 0.1.12")
 end
