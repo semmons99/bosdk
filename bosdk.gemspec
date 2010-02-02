@@ -20,4 +20,6 @@ Gem::Specification.new do |s|
   s.summary = "JRuby Business Object Java SDK wrapper"
   s.platform = Gem::Platform::CURRENT
   s.requirements = "An environment variable 'BOE_JAVA_LIB' pointing to the Business Objects Java SDK directory"
+  s.has_rdoc = true
+  s.extra_rdoc_files = ["README.rdoc", "MIT-LICENSE"]
 end
