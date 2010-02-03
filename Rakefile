@@ -9,7 +9,7 @@ task :rdoc do
 end
 
 desc 'build gem'
-task :gem do
+task :gem => :clobber do
   sh 'gem build bosdk.gemspec'
 end
 
