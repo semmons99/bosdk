@@ -31,13 +31,13 @@
         </h1>
         <ol class='paths'>
           <li>
-            <a href="../files/lib/bosdk/webi_report_engine_rb.html">lib/bosdk/webi_report_engine.rb</a>
-          </li>
-          <li class='other'>
             <a href="../files/lib/bosdk/info_object_rb.html">lib/bosdk/info_object.rb</a>
           </li>
           <li class='other'>
             <a href="../files/lib/bosdk/enterprise_session_rb.html">lib/bosdk/enterprise_session.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/bosdk/webi_report_engine_rb.html">lib/bosdk/webi_report_engine.rb</a>
           </li>
           <li class='other'>
             <a href="../files/lib/bosdk_rb.html">lib/bosdk.rb</a>
@@ -69,7 +69,7 @@
                 <a name='M000001'></a>
                 <div class='synopsis'>
                   <span class='name'>connect</span>
-                  <span class='arguments'>(cms, username, password) {|session| ...}</span>
+                  <span class='arguments'>(cms, username, password, options = Hash.new) {|session| ...}</span>
                 </div>
                 <div class='description'>
                   <p>
@@ -80,7 +80,7 @@
                   <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000001-source'><span class="ruby-comment cmt"># File lib/bosdk.rb, line 35</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">BOSDK</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">session</span> = <span class="ruby-constant">EnterpriseSession</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>)&#x000A;    <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">session</span>&#x000A;    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">disconnect</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000001-source'><span class="ruby-comment cmt"># File lib/bosdk.rb, line 35</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">BOSDK</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">options</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">session</span> = <span class="ruby-constant">EnterpriseSession</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">options</span>)&#x000A;    <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">session</span>&#x000A;    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">disconnect</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>

@@ -31,7 +31,7 @@
         </div>
         <div class='last-update'>
           Last Update:
-          <span class='datetime'>Mon Feb 01 09:02:48 -0500 2010</span>
+          <span class='datetime'>Wed Feb 03 10:43:02 -0500 2010</span>
         </div>
       </div>
       <div id='content'>
@@ -61,6 +61,32 @@
             Alternatively you can use the connect closure.
             </p>
             <pre>require 'bosdk'&#x000A;BOSDK.connect('cms', 'Administrator', '') do |session|&#x000A;  stmt = &quot;SELECT TOP 10 * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User'&quot;&#x000A;  session.query(stmt).each do |obj|&#x000A;    puts obj.path&#x000A;  end&#x000A;end</pre>
+            <h2>BOIRB</h2>
+            <p>
+            The library ships with an extension to the standard irb shell that connects
+            you to a cms and gives you a handful of helpful shortcuts.
+            </p>
+            <pre>connect(cms, username, password, options = Hash.new)</pre>
+            <p>
+            Creates a new EnterpriseSession and binds it to @boe.
+            </p>
+            <pre>connected?</pre>
+            <p>
+            Tests whether @boe is connected to a cms.
+            </p>
+            <pre>disconnect</pre>
+            <p>
+            Disconnects @boe from the cms.
+            </p>
+            <pre>query(stmt)</pre>
+            <p>
+            Runs the provided query on @boe and returns the resulting InfoObject array.
+            </p>
+            <pre>open(docid)</pre>
+            <p>
+            Opens the specified InfoObject using a ReportEngine and returns the doc
+            handle.
+            </p>
             <h2>Resources</h2>
             <ul>
             <li>Website: <a
@@ -68,7 +94,7 @@
             
             </li>
             <li>Git Repo: <a
-            href="http://github.com/semmons99/bosdk/tree/master">github.com/semmons99/bosdk/tree/master</a>
+            href="http://github.com/semmons99/bosdk">github.com/semmons99/bosdk</a>
             
             </li>
             </ul>

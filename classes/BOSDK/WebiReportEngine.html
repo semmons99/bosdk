@@ -50,11 +50,11 @@
             <h2>Methods</h2>
             <h3>public class</h3>
             <ol>
-              <li><a href="#M000002">new</a></li>
+              <li><a href="#M000015">new</a></li>
             </ol>
             <h3>public instance</h3>
             <ol>
-              <li><a href="#M000003">open</a></li>
+              <li><a href="#M000016">open</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -75,8 +75,8 @@
             </div>
             <div id='methods'>
               <h2>Public class methods</h2>
-              <div class='method public-class' id='method-M000002'>
-                <a name='M000002'></a>
+              <div class='method public-class' id='method-M000015'>
+                <a name='M000015'></a>
                 <div class='synopsis'>
                   <span class='name'>new</span>
                   <span class='arguments'>(enterprise_session, locale = &quot;en_US&quot;)</span>
@@ -90,15 +90,15 @@
                   <pre>WebiReportEngine.new(enterprise_session)</pre>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000002-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000015-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000002-source'><span class="ruby-comment cmt"># File lib/bosdk/webi_report_engine.rb, line 10</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">enterprise_session</span>, <span class="ruby-identifier">locale</span> = <span class="ruby-value str">&quot;en_US&quot;</span>)&#x000A;      <span class="ruby-identifier">report_engines</span> = <span class="ruby-identifier">enterprise_session</span>.<span class="ruby-identifier">getService</span>(<span class="ruby-value str">&quot;ReportEngines&quot;</span>)&#x000A;      <span class="ruby-ivar">@webi_report_engine</span> = <span class="ruby-identifier">report_engines</span>.<span class="ruby-identifier">getService</span>(<span class="ruby-constant">ReportEngines</span><span class="ruby-operator">::</span><span class="ruby-constant">ReportEngineType</span><span class="ruby-operator">::</span><span class="ruby-constant">WI_REPORT_ENGINE</span>)&#x000A;      <span class="ruby-ivar">@webi_report_engine</span>.<span class="ruby-identifier">setLocale</span>(<span class="ruby-identifier">locale</span>)&#x000A;      <span class="ruby-comment cmt">#enterprise_session.setAttribute(&quot;widReportEngine&quot;, @webi_report_engine)</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000015-source'><span class="ruby-comment cmt"># File lib/bosdk/webi_report_engine.rb, line 10</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">enterprise_session</span>, <span class="ruby-identifier">locale</span> = <span class="ruby-value str">&quot;en_US&quot;</span>)&#x000A;      <span class="ruby-identifier">report_engines</span> = <span class="ruby-identifier">enterprise_session</span>.<span class="ruby-identifier">getService</span>(<span class="ruby-value str">&quot;ReportEngines&quot;</span>)&#x000A;      <span class="ruby-ivar">@webi_report_engine</span> = <span class="ruby-identifier">report_engines</span>.<span class="ruby-identifier">getService</span>(<span class="ruby-constant">ReportEngines</span><span class="ruby-operator">::</span><span class="ruby-constant">ReportEngineType</span><span class="ruby-operator">::</span><span class="ruby-constant">WI_REPORT_ENGINE</span>)&#x000A;      <span class="ruby-ivar">@webi_report_engine</span>.<span class="ruby-identifier">setLocale</span>(<span class="ruby-identifier">locale</span>)&#x000A;      <span class="ruby-comment cmt">#enterprise_session.setAttribute(&quot;widReportEngine&quot;, @webi_report_engine)</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <h2>Public instance methods</h2>
-              <div class='method public-instance' id='method-M000003'>
-                <a name='M000003'></a>
+              <div class='method public-instance' id='method-M000016'>
+                <a name='M000016'></a>
                 <div class='synopsis'>
                   <span class='name'>open</span>
                   <span class='arguments'>(docid)</span>
@@ -109,10 +109,10 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000003-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000016-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000003-source'><span class="ruby-comment cmt"># File lib/bosdk/webi_report_engine.rb, line 18</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open</span>(<span class="ruby-identifier">docid</span>)&#x000A;      <span class="ruby-ivar">@webi_report_engine</span>.<span class="ruby-identifier">openDocument</span>(<span class="ruby-identifier">docid</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000016-source'><span class="ruby-comment cmt"># File lib/bosdk/webi_report_engine.rb, line 18</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">open</span>(<span class="ruby-identifier">docid</span>)&#x000A;      <span class="ruby-ivar">@webi_report_engine</span>.<span class="ruby-identifier">openDocument</span>(<span class="ruby-identifier">docid</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>
