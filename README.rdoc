@@ -51,7 +51,7 @@ Disconnects @boe from the cms.
  query(stmt)
 Runs the provided query on @boe and returns the resulting InfoObject array.
 
- open(docid)
+ open_webi(docid)
 Opens the specified InfoObject using a ReportEngine and returns the doc handle.
 
 == Resources
