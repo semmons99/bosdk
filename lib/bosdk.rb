@@ -29,6 +29,7 @@ include_class "com.businessobjects.rebean.wi.ReportEngines"
 require 'bosdk/enterprise_session'
 require 'bosdk/info_object'
 require 'bosdk/webi_report_engine'
+require 'bosdk/webi_instance'
 
 module BOSDK
   # A closure over EnterpriseSession
