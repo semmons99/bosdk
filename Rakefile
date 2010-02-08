@@ -29,6 +29,7 @@ Spec::Rake::SpecTask.new(:spec) do |spec|
   spec.spec_files = FileList['spec/**/*_spec.rb']
 end
 
+desc "Run specs with '--format specdoc'"
 Spec::Rake::SpecTask.new(:specdoc) do |spec|
   spec.libs << 'lib' << 'spec'
   spec.spec_files = FileList['spec/**/*_spec.rb']
