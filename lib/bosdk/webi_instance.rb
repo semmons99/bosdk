@@ -1,11 +1,15 @@
 module BOSDK
+  # Creates a wrapper around a DocumentInstance
   class WebiInstance
+    # The underlying DocumentInstance
     attr_reader :instance
 
+    # Create a new WebiInstance from the provided DocumentInstance
     def initialize(instance)
       @instance = instance
     end
 
+    # Returns an array of hashes representing report objects.
     def objects
       return @objects unless @objects.nil?
       objs = []
@@ -22,6 +26,7 @@ module BOSDK
       @objects = objs
     end
 
+    # Returns an array of hashes representing report variables.
     def variables
       return @variables unless @variables.nil?
       vars = []
