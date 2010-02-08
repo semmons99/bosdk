@@ -18,111 +18,123 @@ module BOSDK
       @es = EnterpriseSession.new('cms', 'Administrator', '')
     end
 
-    specify "#new should accept an optional locale setting" do
-      EnterpriseSession.new('cms', 'Administrator', '', :locale => 'en_CA')
+    describe "#new" do
+      it "should accept an optional locale setting" do
+        EnterpriseSession.new('cms', 'Administrator', '', :locale => 'en_CA')
+      end
     end
 
-    specify "#connected? returns 'true' when connected to a CMS" do
-      @es.connected?.should be_true
+    describe "#connected?" do
+      it "returns 'true' when connected to a CMS" do
+        @es.connected?.should be_true
+      end
+
+      it "returns 'false' when not connected to a CMS" do
+        @session.should_receive(:logoff).once.with.and_return
+
+        @es.disconnect
+        @es.connected?.should be_false
+      end
     end
 
-    specify "#connected? returns 'false' when not connected to a CMS" do
-      @session.should_receive(:logoff).once.with.and_return
+    describe "#disconnect" do
+      it "should disconnect from the CMS" do
+        @session.should_receive(:logoff).once.with.and_return
 
-      @es.disconnect
-      @es.connected?.should be_false
+        @es.disconnect
+        @es.connected?.should be_false
+      end
+
+      it "shouldn't raise an error when not connected" do
+        @session.should_receive(:logoff).once.with.and_return
+
+        lambda{2.times{ @es.disconnect }}.should_not raise_exception
+      end
     end
 
-    specify "#disconnect should disconnect from the CMS" do
-      @session.should_receive(:logoff).once.with.and_return
+    describe "#path_to_sql" do
+      it "should convert a path query to an sql query" do
+        path_query = 'path://SystemObjects/Users/Administrator@SI_ID'
+        stmt = "SELECT SI_ID FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User' AND SI_NAME='Administrator'"
+        
+        @stateless_page_info = mock("IStatelessPageInfo").as_null_object
 
-      @es.disconnect
-      @es.connected?.should be_false
+        class PagingQueryOptions; end
+        PagingQueryOptions.should_receive(:new).once.with
+        @infostore.should_receive(:getStatelessPageInfo).once.with(path_query, nil).and_return(@stateless_page_info)
+        @stateless_page_info.should_receive(:getPageSQL).once.with.and_return(stmt)
+
+        @es.path_to_sql(path_query).should == stmt
+      end
     end
 
-    specify "#disconnect shouldn't raise an error when not connected" do
-      @session.should_receive(:logoff).once.with.and_return
+    describe "#query" do
+      it "should send the statement to the underlying InfoStore" do
+        stmt = 'SELECT * FROM CI_INFOOBJECTS'
+        @infostore.should_receive(:query).once.with(stmt).and_return([])
 
-      lambda{2.times{ @es.disconnect }}.should_not raise_exception
+        @es.query(stmt)
+      end
+
+      it "should convert a path:// query to sql before execution" do
+        path_query = 'path://SystemObjects/Users/Administrator@SI_ID'
+        stmt = "SELECT * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User' AND SI_NAME='Administator'"
+
+        @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
+        @infostore.should_receive(:query).once.with(stmt).and_return([])
+
+        @es.query(path_query)
+      end
+
+      it "should convert a query:// query to sql before execution" do
+        path_query = 'query://{SELECT * FROM CI_INFOOBJECTS}'
+        stmt = 'SELECT * FROM CI_INFOOBJECTS'
+
+        @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
+        @infostore.should_receive(:query).once.with(stmt).and_return([])
+
+        @es.query(path_query)
+      end
+
+      it "should convert a cuid:// query to sql before execution" do
+        path_query = 'cuid://ABC'
+        stmt = "SELECT * FROM CI_INFOOBJECTS WHERE SI_CUID='ABC'"
+
+        @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
+        @infostore.should_receive(:query).once.with(stmt).and_return([])
+
+        @es.query(path_query)
+      end
     end
 
-    specify "#path_to_sql should convert a path query to an sql query" do
-      path_query = 'path://SystemObjects/Users/Administrator@SI_ID'
-      stmt = "SELECT SI_ID FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User' AND SI_NAME='Administrator'"
-      
-      @stateless_page_info = mock("IStatelessPageInfo").as_null_object
+    describe "#open_webi" do
+      it "should create a WebiReportEngine and call #open" do
+        @webi_report_engine = mock("WebiReportEngine").as_null_object
+        class WebiReportEngine; end
+        WebiReportEngine.should_receive(:new).once.with(@session, 'en_US').and_return(@webi_report_engine)
+        @webi_report_engine.should_receive(:open).once.with("1234")
 
-      class PagingQueryOptions; end
-      PagingQueryOptions.should_receive(:new).once.with
-      @infostore.should_receive(:getStatelessPageInfo).once.with(path_query, nil).and_return(@stateless_page_info)
-      @stateless_page_info.should_receive(:getPageSQL).once.with.and_return(stmt)
+        @es.open_webi("1234")
+      end
 
-      @es.path_to_sql(path_query).should == stmt
-    end
+      it "should only create a WebiReportEngine once" do
+        @webi_report_engine = mock("WebiReportEngine").as_null_object
+        class WebiReportEngine; end
+        WebiReportEngine.should_receive(:new).once.with(@session, 'en_US').and_return(@webi_report_engine)
+        @webi_report_engine.should_receive(:open).twice.with("1234")
 
-    specify "#query should send the statement to the underlying InfoStore" do
-      stmt = 'SELECT * FROM CI_INFOOBJECTS'
-      @infostore.should_receive(:query).once.with(stmt).and_return([])
+        2.times{@es.open_webi("1234")}
+      end
 
-      @es.query(stmt)
-    end
+      it "should pass any specified locale" do
+        @webi_report_engine = mock("WebiReportEngine").as_null_object
+        class WebiReportEngine; end
+        WebiReportEngine.should_receive(:new).once.with(@session, 'en_CA').and_return(@webi_report_engine)
+        @webi_report_engine.should_receive(:open).once.with("1234")
 
-    specify "#query should convert a path:// query to sql before execution" do
-      path_query = 'path://SystemObjects/Users/Administrator@SI_ID'
-      stmt = "SELECT * FROM CI_SYSTEMOBJECTS WHERE SI_KIND='User' AND SI_NAME='Administator'"
-
-      @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
-      @infostore.should_receive(:query).once.with(stmt).and_return([])
-
-      @es.query(path_query)
-    end
-
-    specify "#query should convert a query:// query to sql before execution" do
-      path_query = 'query://{SELECT * FROM CI_INFOOBJECTS}'
-      stmt = 'SELECT * FROM CI_INFOOBJECTS'
-
-      @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
-      @infostore.should_receive(:query).once.with(stmt).and_return([])
-
-      @es.query(path_query)
-    end
-
-    specify "#query should convert a cuid:// query to sql before execution" do
-      path_query = 'cuid://ABC'
-      stmt = "SELECT * FROM CI_INFOOBJECTS WHERE SI_CUID='ABC'"
-
-      @es.should_receive(:path_to_sql).once.with(path_query).and_return(stmt)
-      @infostore.should_receive(:query).once.with(stmt).and_return([])
-
-      @es.query(path_query)
-    end
-
-    specify "#open_webi should create a WebiReportEngine and call #open" do
-      @webi_report_engine = mock("WebiReportEngine").as_null_object
-      class WebiReportEngine; end
-      WebiReportEngine.should_receive(:new).once.with(@session, 'en_US').and_return(@webi_report_engine)
-      @webi_report_engine.should_receive(:open).once.with("1234")
-
-      @es.open_webi("1234")
-    end
-
-    specify "#open_webi should only create a WebiReportEngine once" do
-      @webi_report_engine = mock("WebiReportEngine").as_null_object
-      class WebiReportEngine; end
-      WebiReportEngine.should_receive(:new).once.with(@session, 'en_US').and_return(@webi_report_engine)
-      @webi_report_engine.should_receive(:open).twice.with("1234")
-
-      2.times{@es.open_webi("1234")}
-    end
-
-    specify "#open_webi should pass any specified locale" do
-      @webi_report_engine = mock("WebiReportEngine").as_null_object
-      class WebiReportEngine; end
-      WebiReportEngine.should_receive(:new).once.with(@session, 'en_CA').and_return(@webi_report_engine)
-      @webi_report_engine.should_receive(:open).once.with("1234")
-
-      es = EnterpriseSession.new('cms', 'Administrator', '', :locale => 'en_CA')
-      es.open_webi("1234")
+        es = EnterpriseSession.new('cms', 'Administrator', '', :locale => 'en_CA')
+        es.open_webi("1234")
+      end
     end
   end
 end
