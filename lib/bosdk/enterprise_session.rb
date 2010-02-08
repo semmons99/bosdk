@@ -1,7 +1,3 @@
-require 'bosdk/info_object'
-require 'bosdk/webi_report_engine'
-require 'bosdk/webi_instance'
-
 module BOSDK
   # Creates a wrapper around the Business Objects Java SDK.
   class EnterpriseSession
