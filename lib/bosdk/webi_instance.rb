@@ -21,5 +21,21 @@ module BOSDK
       end
       @objects = objs
     end
+
+    def variables
+      return @variables unless @variables.nil?
+      vars = []
+      dict = @instance.getDictionary
+      dict.getVariables.each do |var|
+        vars << {
+          :name => var.getName,
+          :qual => var.getQualification.getString.downcase.to_sym,
+          :type => var.getType.getString.downcase.to_sym,
+          :formula => var.getFormula.getValue,
+          :variable => var,
+        }
+      end
+      @variables = vars
+    end
   end
 end
