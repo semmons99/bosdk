@@ -18,16 +18,20 @@ module BOSDK
       @wre = WebiReportEngine.new(@enterprise_session)
     end
 
-    specify "#new should allow you to set the locale" do
-      @webi_report_engine.should_receive(:setLocale).once.with("en_CA")
+    describe "#new" do
+      it "should allow you to set the locale" do
+        @webi_report_engine.should_receive(:setLocale).once.with("en_CA")
 
-      WebiReportEngine.new(@enterprise_session, "en_CA")
+        WebiReportEngine.new(@enterprise_session, "en_CA")
+      end
     end
 
-    specify "#open should call the underlying #openDocument with the supplied docid" do
-      @webi_report_engine.should_receive(:openDocument).once.with("1234")
+    describe "#open" do
+      it  "should call the underlying #openDocument with the supplied docid" do
+        @webi_report_engine.should_receive(:openDocument).once.with("1234")
 
-      @wre.open("1234")
+        @wre.open("1234")
+      end
     end
   end
 end
