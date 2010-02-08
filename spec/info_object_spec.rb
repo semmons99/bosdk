@@ -10,6 +10,18 @@ module BOSDK
 
       @obj = InfoObject.new(@infoobject)
     end
+    
+    specify "#docid should call #getID and return the result" do
+      @infoobject.should_receive(:getID).once.with.and_return(1)
+
+      @obj.docid.should == 1
+    end
+
+    specify "#docid should only call #getID once" do
+      @infoobject.should_receive(:getID).once.with.and_return(1)
+
+      2.times{@obj.docid.should == 1}
+    end
 
     specify "#is_root? should return true when #parent_id is nil" do
       @infoobject.should_receive(:parent_id).once.with.and_return(nil)

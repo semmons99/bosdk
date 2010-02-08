@@ -10,9 +10,14 @@ module BOSDK
       @obj = obj
     end
 
+    # Returns the Business Objects ID (alias for #getID).
+    def docid
+      getID
+    end
+
     # Returns true/false if #obj is a root node.
     def is_root?
-      parent_id.nil? or parent_id == 0 or parent_id == getID
+      parent_id.nil? or parent_id == 0 or parent_id == docid
     end
 
     # Returns the parent of #obj as an InfoObject
