@@ -1,5 +1,6 @@
 require 'bosdk/info_object'
 require 'bosdk/webi_report_engine'
+require 'bosdk/webi_instance'
 
 module BOSDK
   # Creates a wrapper around the Business Objects Java SDK.
@@ -51,7 +52,7 @@ module BOSDK
     # Open a Webi document from the provided docid
     def open_webi(docid)
       @webi_report_engine ||= WebiReportEngine.new(@session, @locale)
-      @webi_report_engine.open(docid)
+      WebiInstance.new(@webi_report_engine.open(docid))
     end
   end
 end

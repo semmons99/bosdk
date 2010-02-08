@@ -134,6 +134,22 @@ module BOSDK
         es = EnterpriseSession.new('cms', 'Administrator', '', :locale => 'en_CA')
         es.open_webi("1234")
       end
+
+      it "should create a WebiInstance and return it" do
+        @webi_report_engine = mock("WebiReportEngine").as_null_object
+        @document_instance = mock("DocumentInstance").as_null_object
+        @webi_instance = mock("WebiInstance").as_null_object
+
+        class WebiReportEngine; end
+        class WebiInstance; end
+
+        WebiReportEngine.should_receive(:new).once.with(@session, 'en_CA').and_return(@webi_report_engine)
+        WebiInstance.should_receive(:new).once.with(@document_instance).and_return(@webi_instance)
+        @webi_report_engine.should_receive(:open).once.with("1234").and_return(@document_instance)
+
+        es = EnterpriseSession.new('cms', 'Administrator', '', :locale => 'en_CA')
+        es.open_webi("1234").should == @webi_instance
+      end
     end
   end
 end
