@@ -12,7 +12,6 @@ module BOSDK
       module ReportEngines; module ReportEngineType; module WI_REPORT_ENGINE; end; end; end
       @report_engines.should_receive(:getService).at_least(1).with(ReportEngines::ReportEngineType::WI_REPORT_ENGINE).and_return(@webi_report_engine)
       @webi_report_engine.should_receive(:setLocale).at_least(1).with("en_US")
-      #@enterprise_session.should_receive(:setAttribute).at_least(1).with("widReportEngine", @webi_report_engine)
 
       @wre = WebiReportEngine.new(@enterprise_session)
     end
