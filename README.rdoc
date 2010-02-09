@@ -52,7 +52,16 @@ Disconnects @boe from the cms.
 Runs the provided query on @boe and returns the resulting InfoObject array.
 
  open_webi(docid)
-Opens the specified InfoObject using a ReportEngine and returns the doc handle.
+Opens the specified InfoObject using a ReportEngine and returns a handle to the
+WebiInstance. It also creates the following instance variables: @doc, @objs and
+@vars. @doc is a handle to the WebiInstance, @objs is an alias for @doc.objects
+and @vars is an alias for @doc.variables.
+
+ objects
+Shortcut to @objs which is an alias for @doc.objects
+
+ variables
+Shortcut to @vars which is an alias for @doc.variables
 
 == Resources
 
