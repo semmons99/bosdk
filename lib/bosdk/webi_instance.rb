@@ -18,8 +18,8 @@ module BOSDK
         obj = dict.getChildAt(i)
         objs << {
           :name => obj.getName,
-          :qual => obj.getQualification.getString.downcase.to_sym,
-          :type => obj.getType.getString.downcase.to_sym,
+          :qual => obj.getQualification.toString.downcase.to_sym,
+          :type => obj.getType.toString.downcase.to_sym,
           :object => obj,
         }
       end
@@ -34,8 +34,8 @@ module BOSDK
       dict.getVariables.each do |var|
         vars << {
           :name => var.getName,
-          :qual => var.getQualification.getString.downcase.to_sym,
-          :type => var.getType.getString.downcase.to_sym,
+          :qual => var.getQualification.toString.downcase.to_sym,
+          :type => var.getType.toString.downcase.to_sym,
           :formula => var.getFormula.getValue,
           :variable => var,
         }

@@ -39,11 +39,11 @@ module BOSDK
         @report_expression_2.should_receive(:getQualification).once.with.and_return(@object_qualification_2)
         @report_expression_2.should_receive(:getType).once.with.and_return(@object_type_2)
 
-        @object_qualification_1.should_receive(:getString).once.with.and_return("DIMENSION")
-        @object_qualification_2.should_receive(:getString).once.with.and_return("MEASURE")
+        @object_qualification_1.should_receive(:toString).once.with.and_return("DIMENSION")
+        @object_qualification_2.should_receive(:toString).once.with.and_return("MEASURE")
 
-        @object_type_1.should_receive(:getString).once.with.and_return("TEXT")
-        @object_type_2.should_receive(:getString).once.with.and_return("NUMERIC")
+        @object_type_1.should_receive(:toString).once.with.and_return("TEXT")
+        @object_type_2.should_receive(:toString).once.with.and_return("NUMERIC")
 
         @objects = [
           {:name => 'Object1', :qual => :dimension, :type => :text, :object => @report_expression_1},
@@ -85,11 +85,11 @@ module BOSDK
         @variable_expression_2.should_receive(:getType).once.with.and_return(@object_type_2)
         @variable_expression_2.should_receive(:getFormula).once.with.and_return(@formula_expression_2)
 
-        @object_qualification_1.should_receive(:getString).once.with.and_return("DIMENSION")
-        @object_qualification_2.should_receive(:getString).once.with.and_return("MEASURE")
+        @object_qualification_1.should_receive(:toString).once.with.and_return("DIMENSION")
+        @object_qualification_2.should_receive(:toString).once.with.and_return("MEASURE")
 
-        @object_type_1.should_receive(:getString).once.with.and_return("TEXT")
-        @object_type_2.should_receive(:getString).once.with.and_return("NUMERIC")
+        @object_type_1.should_receive(:toString).once.with.and_return("TEXT")
+        @object_type_2.should_receive(:toString).once.with.and_return("NUMERIC")
 
         @formula_expression_1.should_receive(:getValue).once.with.and_return('If([Object1]="Object1";"Yes";"False")')
         @formula_expression_2.should_receive(:getValue).once.with.and_return('Sum([Object2])')
