@@ -5,12 +5,12 @@
 
 Gem::Specification.new do |s|
   s.name = %q{bosdk}
-  s.version = "1.0.3"
+  s.version = "1.1.0"
   s.platform = %q{universal-java-1.6}
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Shane Emmons"]
-  s.date = %q{2010-02-05}
+  s.date = %q{2010-02-09}
   s.default_executable = %q{boirb}
   s.description = %q{A JRuby wrapper for the Business Objects Java SDK}
   s.email = %q{semmons99@gmail.com}
@@ -31,10 +31,12 @@ Gem::Specification.new do |s|
      "lib/bosdk.rb",
      "lib/bosdk/enterprise_session.rb",
      "lib/bosdk/info_object.rb",
+     "lib/bosdk/webi_instance.rb",
      "lib/bosdk/webi_report_engine.rb",
      "spec/bosdk_spec.rb",
      "spec/enterprise_session_spec.rb",
      "spec/info_object_spec.rb",
+     "spec/webi_instance_spec.rb",
      "spec/webi_report_engine_spec.rb"
   ]
   s.homepage = %q{http://semmons99.github.com/bosdk}
@@ -47,6 +49,7 @@ Gem::Specification.new do |s|
     "spec/bosdk_spec.rb",
      "spec/enterprise_session_spec.rb",
      "spec/info_object_spec.rb",
+     "spec/webi_instance_spec.rb",
      "spec/webi_report_engine_spec.rb"
   ]
 
