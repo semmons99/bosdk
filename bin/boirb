@@ -46,7 +46,18 @@ def query(stmt)
 end
 
 def open_webi(docid)
-  @boe.open_webi(docid) if connected?
+  @doc = @boe.open_webi(docid) if connected?
+  @objs = @doc.objects
+  @vars = @doc.variables
+  @doc
+end
+
+def objects
+  @objs
+end
+
+def variables
+  @vars
 end
 
 IRB.start_session(Kernel.binding)
