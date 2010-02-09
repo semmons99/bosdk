@@ -44,13 +44,14 @@ module BOSDK
 
         @object_type_1.should_receive(:getString).once.with.and_return("TEXT")
         @object_type_2.should_receive(:getString).once.with.and_return("NUMERIC")
-      end
 
-      it "should return an array of report objects" do
         @objects = [
           {:name => 'Object1', :qual => :dimension, :type => :text, :object => @report_expression_1},
           {:name => 'Object2', :qual => :measure, :type => :numeric, :object => @report_expression_2},
         ]
+      end
+
+      it "should return an array of report objects" do
         @webi.objects.should == @objects
       end
 
@@ -92,13 +93,14 @@ module BOSDK
 
         @formula_expression_1.should_receive(:getValue).once.with.and_return('If([Object1]="Object1";"Yes";"False")')
         @formula_expression_2.should_receive(:getValue).once.with.and_return('Sum([Object2])')
-      end
 
-      it "should return an array of variables" do
         @variables = [
           {:name => 'Variable1', :qual => :dimension, :type => :text, :formula => 'If([Object1]="Object1";"Yes";"False")', :variable => @variable_expression_1},
           {:name => 'Variable2', :qual => :measure, :type => :numeric, :formula => 'Sum([Object2])', :variable => @variable_expression_2},
         ]
+      end
+
+      it "should return an array of variables" do
         @webi.variables.should == @variables
       end
 
