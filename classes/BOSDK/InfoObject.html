@@ -1,7 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang='en'>
   <head>
-    <title>: BOSDK::InfoObject [RDoc Documentation]</title>
+    <title>
+      : BOSDK::InfoObject [bosdk 1.1.0
+      ]
+    </title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <link href='../../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
     <script type='text/javascript'>
@@ -50,16 +53,17 @@
             <h2>Methods</h2>
             <h3>public class</h3>
             <ol>
-              <li><a href="#M000008">new</a></li>
+              <li><a href="#M000002">new</a></li>
             </ol>
             <h3>public instance</h3>
             <ol>
-              <li><a href="#M000012">&lt;=&gt;</a></li>
-              <li><a href="#M000009">is_root?</a></li>
-              <li><a href="#M000013">method_missing</a></li>
-              <li><a href="#M000010">parent</a></li>
-              <li><a href="#M000011">path</a></li>
-              <li><a href="#M000014">respond_to?</a></li>
+              <li><a href="#M000007">&lt;=&gt;</a></li>
+              <li><a href="#M000003">docid</a></li>
+              <li><a href="#M000004">is_root?</a></li>
+              <li><a href="#M000008">method_missing</a></li>
+              <li><a href="#M000005">parent</a></li>
+              <li><a href="#M000006">path</a></li>
+              <li><a href="#M000009">respond_to?</a></li>
             </ol>
           </div>
           <div id='section'>
@@ -80,8 +84,8 @@
             </div>
             <div id='methods'>
               <h2>Public class methods</h2>
-              <div class='method public-class' id='method-M000008'>
-                <a name='M000008'></a>
+              <div class='method public-class' id='method-M000002'>
+                <a name='M000002'></a>
                 <div class='synopsis'>
                   <span class='name'>new</span>
                   <span class='arguments'>(obj)</span>
@@ -94,15 +98,15 @@
                   <pre>InfoObject.new(obj)</pre>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000002-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000008-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 9</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">obj</span>)&#x000A;      <span class="ruby-ivar">@obj</span> = <span class="ruby-identifier">obj</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000002-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 9</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">obj</span>)&#x000A;      <span class="ruby-ivar">@obj</span> = <span class="ruby-identifier">obj</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
               <h2>Public instance methods</h2>
-              <div class='method public-instance' id='method-M000012'>
-                <a name='M000012'></a>
+              <div class='method public-instance' id='method-M000007'>
+                <a name='M000007'></a>
                 <div class='synopsis'>
                   <span class='name'>&lt;=&gt;</span>
                   <span class='arguments'>(other_infoobject)</span>
@@ -113,14 +117,32 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000012-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000007-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000012-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 30</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">other_infoobject</span>)&#x000A;      <span class="ruby-identifier">title</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other_infoobject</span>.<span class="ruby-identifier">title</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000007-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 35</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;=&gt;</span>(<span class="ruby-identifier">other_infoobject</span>)&#x000A;      <span class="ruby-identifier">title</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">other_infoobject</span>.<span class="ruby-identifier">title</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000009'>
-                <a name='M000009'></a>
+              <div class='method public-instance' id='method-M000003'>
+                <a name='M000003'></a>
+                <div class='synopsis'>
+                  <span class='name'>docid</span>
+                  <span class='arguments'>()</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns the Business Objects ID (alias for getID).
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000003-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='M000003-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 14</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">docid</span>&#x000A;      <span class="ruby-identifier">getID</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-M000004'>
+                <a name='M000004'></a>
                 <div class='synopsis'>
                   <span class='name'>is_root?</span>
                   <span class='arguments'>()</span>
@@ -131,14 +153,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000004-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000009-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 14</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_root?</span>&#x000A;      <span class="ruby-identifier">parent_id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">parent_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">parent_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">getID</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000004-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 19</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">is_root?</span>&#x000A;      <span class="ruby-identifier">parent_id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">parent_id</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">parent_id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">docid</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000013'>
-                <a name='M000013'></a>
+              <div class='method public-instance' id='method-M000008'>
+                <a name='M000008'></a>
                 <div class='synopsis'>
                   <span class='name'>method_missing</span>
                   <span class='arguments'>(method, *args)</span>
@@ -149,14 +171,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000013-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000008-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000013-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 35</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)&#x000A;      <span class="ruby-identifier">eval</span> <span class="ruby-node">&quot;return @#{method.to_s}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;@#{method.to_s}&quot;</span>)&#x000A;      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@obj</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>)&#x000A;        <span class="ruby-identifier">eval</span> <span class="ruby-node">&quot;return @#{method.to_s} = @obj.send(method, *args)&quot;</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;      <span class="ruby-keyword kw">super</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000008-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 40</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)&#x000A;      <span class="ruby-identifier">eval</span> <span class="ruby-node">&quot;return @#{method.to_s}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">instance_variables</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-node">&quot;@#{method.to_s}&quot;</span>)&#x000A;      <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@obj</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>)&#x000A;        <span class="ruby-identifier">eval</span> <span class="ruby-node">&quot;return @#{method.to_s} = @obj.send(method, *args)&quot;</span>&#x000A;      <span class="ruby-keyword kw">end</span>&#x000A;      <span class="ruby-keyword kw">super</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000010'>
-                <a name='M000010'></a>
+              <div class='method public-instance' id='method-M000005'>
+                <a name='M000005'></a>
                 <div class='synopsis'>
                   <span class='name'>parent</span>
                   <span class='arguments'>()</span>
@@ -167,14 +189,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000010-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000005-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000010-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 19</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parent</span>&#x000A;      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">is_root?</span>&#x000A;      <span class="ruby-ivar">@parent</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">InfoObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">getParent</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000005-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 24</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parent</span>&#x000A;      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">is_root?</span>&#x000A;      <span class="ruby-ivar">@parent</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">InfoObject</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">getParent</span>)&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000011'>
-                <a name='M000011'></a>
+              <div class='method public-instance' id='method-M000006'>
+                <a name='M000006'></a>
                 <div class='synopsis'>
                   <span class='name'>path</span>
                   <span class='arguments'>()</span>
@@ -185,14 +207,14 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000011-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000006-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000011-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 25</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">path</span>&#x000A;      <span class="ruby-ivar">@path</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">is_root?</span> <span class="ruby-value">? </span><span class="ruby-value str">''</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">path</span>) <span class="ruby-operator">+</span> <span class="ruby-node">&quot;/#{title}&quot;</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000006-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 30</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">path</span>&#x000A;      <span class="ruby-ivar">@path</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">is_root?</span> <span class="ruby-value">? </span><span class="ruby-value str">''</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">path</span>) <span class="ruby-operator">+</span> <span class="ruby-node">&quot;/#{title}&quot;</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
-              <div class='method public-instance' id='method-M000014'>
-                <a name='M000014'></a>
+              <div class='method public-instance' id='method-M000009'>
+                <a name='M000009'></a>
                 <div class='synopsis'>
                   <span class='name'>respond_to?</span>
                   <span class='arguments'>(method)</span>
@@ -203,10 +225,10 @@
                   </p>
                 </div>
                 <div class='source'>
-                  <a class='source-toggle' href='#' onclick="toggleCode('M000014-source'); return false">
+                  <a class='source-toggle' href='#' onclick="toggleCode('M000009-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000014-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 44</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>)&#x000A;      <span class="ruby-ivar">@obj</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword kw">super</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000009-source'><span class="ruby-comment cmt"># File lib/bosdk/info_object.rb, line 49</span>&#x000A;    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>)&#x000A;      <span class="ruby-ivar">@obj</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">method</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword kw">super</span>&#x000A;    <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>

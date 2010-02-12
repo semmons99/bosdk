@@ -1,7 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang='en'>
   <head>
-    <title>: BOSDK [RDoc Documentation]</title>
+    <title>
+      : BOSDK [bosdk 1.1.0
+      ]
+    </title>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'>
     <link href='../rdoc-style.css' media='screen' rel='stylesheet' type='text/css'>
     <script type='text/javascript'>
@@ -31,16 +34,19 @@
         </h1>
         <ol class='paths'>
           <li>
-            <a href="../files/lib/bosdk/info_object_rb.html">lib/bosdk/info_object.rb</a>
-          </li>
-          <li class='other'>
             <a href="../files/lib/bosdk/enterprise_session_rb.html">lib/bosdk/enterprise_session.rb</a>
           </li>
           <li class='other'>
-            <a href="../files/lib/bosdk/webi_report_engine_rb.html">lib/bosdk/webi_report_engine.rb</a>
+            <a href="../files/lib/bosdk/info_object_rb.html">lib/bosdk/info_object.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/bosdk/webi_instance_rb.html">lib/bosdk/webi_instance.rb</a>
           </li>
           <li class='other'>
             <a href="../files/lib/bosdk_rb.html">lib/bosdk.rb</a>
+          </li>
+          <li class='other'>
+            <a href="../files/lib/bosdk/webi_report_engine_rb.html">lib/bosdk/webi_report_engine.rb</a>
           </li>
           <li>
             <a class='show' href='#' onclick='this.parentNode.parentNode.className += " expanded"; this.parentNode.removeChild(this); return false'>show all</a>
@@ -61,6 +67,7 @@
               <h2>Classes and Modules</h2>
               Class <a href="BOSDK/EnterpriseSession.html" class="link">BOSDK::EnterpriseSession</a><br />
               Class <a href="BOSDK/InfoObject.html" class="link">BOSDK::InfoObject</a><br />
+              Class <a href="BOSDK/WebiInstance.html" class="link">BOSDK::WebiInstance</a><br />
               Class <a href="BOSDK/WebiReportEngine.html" class="link">BOSDK::WebiReportEngine</a><br />
             </div>
             <div id='methods'>
@@ -80,7 +87,7 @@
                   <a class='source-toggle' href='#' onclick="toggleCode('M000001-source'); return false">
                     [show source]
                   </a>
-                  <pre id='M000001-source'><span class="ruby-comment cmt"># File lib/bosdk.rb, line 35</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">BOSDK</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">options</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">session</span> = <span class="ruby-constant">EnterpriseSession</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">options</span>)&#x000A;    <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">session</span>&#x000A;    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">disconnect</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
+                  <pre id='M000001-source'><span class="ruby-comment cmt"># File lib/bosdk.rb, line 36</span>&#x000A;  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">BOSDK</span>.<span class="ruby-identifier">connect</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">options</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)&#x000A;    <span class="ruby-identifier">session</span> = <span class="ruby-constant">EnterpriseSession</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">cms</span>, <span class="ruby-identifier">username</span>, <span class="ruby-identifier">password</span>, <span class="ruby-identifier">options</span>)&#x000A;    <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">session</span>&#x000A;    <span class="ruby-identifier">session</span>.<span class="ruby-identifier">disconnect</span>&#x000A;  <span class="ruby-keyword kw">end</span></pre>
                 </div>
               </div>
             </div>
