@@ -67,3 +67,4 @@ Shortcut to @vars which is an alias for @doc.variables
 
 - Website: http://semmons99.github.com/bosdk
 - Git Repo: http://github.com/semmons99/bosdk
+- Twitter: http://twitter.com/bosdk_gem
