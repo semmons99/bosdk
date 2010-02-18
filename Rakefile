@@ -14,11 +14,15 @@ begin
     gem.homepage = "http://semmons99.github.com/bosdk"
     gem.authors = ["Shane Emmons"]
     gem.platform = Gem::Platform::CURRENT
+    gem.rubyforge_project = "bosdk"
     gem.requirements = "An environment variable 'BOE_JAVA_LIB' pointing to the Business Objects Java SDK directory"
     gem.add_development_dependency "rspec", ">= 1.3.0"
     gem.add_development_dependency "hanna", ">= 0.1.12"
   end
   Jeweler::GemcutterTasks.new
+  Jeweler::RubyforgeTasks.new do |gem|
+    gem.remote_doc_path = ""
+  end
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with gem install jeweler"
 end
