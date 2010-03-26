@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=windows-1252" />
+<title>Module: BOSDK</title>
+<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="_index.html">Index (B)</a> &raquo; 
+    
+    
+    <span class="title">BOSDK</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: BOSDK 
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/bosdk.rb<span class="defines">,<br />
+  lib/bosdk/info_object.rb,<br /> lib/bosdk/webi_instance.rb,<br /> lib/bosdk/enterprise_session.rb,<br /> lib/bosdk/webi_report_engine.rb</span>
+</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Defined Under Namespace</h2>
+<p class="children">
+   
+    
+   
+    
+      <strong class="classes">Classes:</strong> <a href="BOSDK/EnterpriseSession.html" title="BOSDK::EnterpriseSession (class)">EnterpriseSession</a>, <a href="BOSDK/InfoObject.html" title="BOSDK::InfoObject (class)">InfoObject</a>, <a href="BOSDK/WebiInstance.html" title="BOSDK::WebiInstance (class)">WebiInstance</a>, <a href="BOSDK/WebiReportEngine.html" title="BOSDK::WebiReportEngine (class)">WebiReportEngine</a>
+    
+  
+</p>
+
+
+
+  
+    <h2>Class Method Summary</h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connect-class_method" title="connect (class method)">+ (Object) <strong>connect</strong>(cms, username, password, options = Hash.new) {|session| ... }</a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+A closure over EnterpriseSession.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="connect-class_method">
+  
+    + (<tt>Object</tt>) <strong>connect</strong>(cms, username, password, options = Hash.new) {|session| ... }
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+A closure over EnterpriseSession
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Yields:</h3>
+<ul class="yield">
+  
+    <li>
+      
+        <span class='type'>(<tt>session</tt>)</span>
+      
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+36
+37
+38
+39
+40</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bosdk.rb', line 36</span>
+
+<span class='kw'>def</span> <span class='const'>BOSDK</span><span class='period'>.</span><span class='id connect'>connect</span><span class='lparen'>(</span><span class='id cms'>cms</span><span class='comma'>,</span> <span class='id username'>username</span><span class='comma'>,</span> <span class='id password'>password</span><span class='comma'>,</span> <span class='id options'>options</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id new'>new</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
+  <span class='id session'>session</span> <span class='op'>=</span> <span class='const'>EnterpriseSession</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id cms'>cms</span><span class='comma'>,</span> <span class='id username'>username</span><span class='comma'>,</span> <span class='id password'>password</span><span class='comma'>,</span> <span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='kw'>yield</span> <span class='id session'>session</span>
+  <span class='id session'>session</span><span class='period'>.</span><span class='id disconnect'>disconnect</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Mar 26 12:49:42 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.4 (ruby-1.9.1).
+</div>
+
+  </body>
+</html>

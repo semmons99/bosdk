@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta name="Content-Type" content="text/html; charset=windows-1252" />
+<title>Class: BOSDK::WebiReportEngine</title>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '..';
+  if (relpath != '') relpath += '/';
+</script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../_index.html">Index (W)</a> &raquo; 
+    <span class='title'><a href="../BOSDK.html" title="BOSDK (module)">BOSDK</a></span>
+     &raquo; 
+    <span class="title">WebiReportEngine</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  <a id="class_list_link" href="#">Class List</a>
+  <a id="method_list_link" href="#">Method List</a>
+  <a id ="file_list_link" href="#">File List</a>
+</div>
+
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: BOSDK::WebiReportEngine 
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">BOSDK::WebiReportEngine</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r2 last">Defined in:</dt>
+    <dd class="r2 last">lib/bosdk/webi_report_engine.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a wrapper around a Webi based ReportEngine.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  <h2>Instance Attribute Summary</h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#webi_report_engine-instance_method" title="#webi_report_engine (instance method)">- (Object) <strong>webi_report_engine</strong> </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title readonly">readonly</span>
+    
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+The underlying ReportEngine.
+</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+  
+    <h2>Instance Method Summary</h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">- (WebiReportEngine) <strong>initialize</strong>(enterprise_session, locale = &quot;en_US&quot;) </a>
+    
+
+    
+  </span>
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Creates a new ReportEngine using the provided EnterpriseSession and an
+optional locale setting.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open-instance_method" title="#open (instance method)">- (Object) <strong>open</strong>(docid) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Opens the webi document specified by the docid.
+</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <p class="signature first" id="initialize-instance_method">
+  
+    - (<tt><a href="" title="BOSDK::WebiReportEngine (class)">WebiReportEngine</a></tt>) <strong>initialize</strong>(enterprise_session, locale = &quot;en_US&quot;) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Creates a new ReportEngine using the provided EnterpriseSession and an
+optional locale setting.
+</p>
+<pre class="code">
+ <span class='const'>WebiReportEngine</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id enterprise_session'>enterprise_session</span><span class='rparen'>)</span>
+</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14
+15</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bosdk/webi_report_engine.rb', line 10</span>
+
+<span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id enterprise_session'>enterprise_session</span><span class='comma'>,</span> <span class='id locale'>locale</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en_US</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id report_engines'>report_engines</span> <span class='op'>=</span> <span class='id enterprise_session'>enterprise_session</span><span class='period'>.</span><span class='id getService'>getService</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ReportEngines</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='ivar'>@webi_report_engine</span> <span class='op'>=</span> <span class='id report_engines'>report_engines</span><span class='period'>.</span><span class='id getService'>getService</span><span class='lparen'>(</span><span class='const'>ReportEngines</span><span class='op'>::</span><span class='const'>ReportEngineType</span><span class='op'>::</span><span class='const'>WI_REPORT_ENGINE</span><span class='rparen'>)</span>
+  <span class='ivar'>@webi_report_engine</span><span class='period'>.</span><span class='id setLocale'>setLocale</span><span class='lparen'>(</span><span class='id locale'>locale</span><span class='rparen'>)</span>
+  <span class='comment'>#enterprise_session.setAttribute(&quot;widReportEngine&quot;, @webi_report_engine)
+</span><span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <span id="webi_report_engine-instance_method"></span>
+      <div class="method_details first">
+  <p class="signature first" id="webi_report_engine-instance_method">
+  
+    - (<tt>Object</tt>) <strong>webi_report_engine</strong>  <span class="extras">(readonly)</span>
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+The underlying ReportEngine.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+5
+6
+7</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bosdk/webi_report_engine.rb', line 5</span>
+
+<span class='kw'>def</span> <span class='id webi_report_engine'>webi_report_engine</span>
+  <span class='ivar'>@webi_report_engine</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="open-instance_method">
+  
+    - (<tt>Object</tt>) <strong>open</strong>(docid) 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Opens the webi document specified by the docid.
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+18
+19
+20</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/bosdk/webi_report_engine.rb', line 18</span>
+
+<span class='kw'>def</span> <span class='id open'>open</span><span class='lparen'>(</span><span class='id docid'>docid</span><span class='rparen'>)</span>
+  <span class='ivar'>@webi_report_engine</span><span class='period'>.</span><span class='id openDocument'>openDocument</span><span class='lparen'>(</span><span class='id docid'>docid</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Fri Mar 26 12:49:43 2010 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool">yard</a>
+  0.5.4 (ruby-1.9.1).
+</div>
+
+  </body>
+</html>
