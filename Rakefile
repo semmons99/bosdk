@@ -3,6 +3,8 @@ require 'rake'
 require 'rake/clean'
 
 CLOBBER.include 'pkg'
+CLOBBER.include 'doc'
+CLOBBER.include '.yardoc'
 
 begin
   require 'jeweler'
@@ -17,7 +19,7 @@ begin
     gem.rubyforge_project = "bosdk"
     gem.requirements = "An environment variable 'BOE_JAVA_LIB' pointing to the Business Objects Java SDK directory"
     gem.add_development_dependency "rspec", ">= 1.3.0"
-    gem.add_development_dependency "hanna", ">= 0.1.12"
+    gem.add_development_dependency "yard", ">= 0.5.4"
   end
   Jeweler::GemcutterTasks.new
   Jeweler::RubyforgeTasks.new do |gem|
@@ -46,12 +48,5 @@ task :default => :spec
 
 task :test => :spec
 
-require 'hanna/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "bosdk #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
-end
+require 'yard'
+YARD::Rake::YardocTask.new
