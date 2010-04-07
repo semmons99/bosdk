@@ -10,20 +10,20 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Shane Emmons"]
-  s.date = %q{2010-02-09}
+  s.date = %q{2010-04-07}
   s.default_executable = %q{boirb}
   s.description = %q{A JRuby wrapper for the Business Objects Java SDK}
   s.email = %q{semmons99@gmail.com}
   s.executables = ["boirb"]
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
+     "README.md"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README.rdoc",
+     "README.md",
      "Rakefile",
      "VERSION",
      "bin/boirb",
@@ -43,7 +43,8 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.requirements = ["An environment variable 'BOE_JAVA_LIB' pointing to the Business Objects Java SDK directory"]
-  s.rubygems_version = %q{1.3.5}
+  s.rubyforge_project = %q{bosdk}
+  s.rubygems_version = %q{1.3.6}
   s.summary = %q{JRuby Business Object Java SDK wrapper}
   s.test_files = [
     "spec/bosdk_spec.rb",
@@ -59,14 +60,14 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
       s.add_development_dependency(%q<rspec>, [">= 1.3.0"])
-      s.add_development_dependency(%q<hanna>, [">= 0.1.12"])
+      s.add_development_dependency(%q<yard>, [">= 0.5.4"])
     else
       s.add_dependency(%q<rspec>, [">= 1.3.0"])
-      s.add_dependency(%q<hanna>, [">= 0.1.12"])
+      s.add_dependency(%q<yard>, [">= 0.5.4"])
     end
   else
     s.add_dependency(%q<rspec>, [">= 1.3.0"])
-    s.add_dependency(%q<hanna>, [">= 0.1.12"])
+    s.add_dependency(%q<yard>, [">= 0.5.4"])
   end
 end
 
