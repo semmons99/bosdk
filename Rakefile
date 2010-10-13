@@ -18,7 +18,7 @@ begin
     gem.platform = Gem::Platform::CURRENT
     gem.rubyforge_project = "bosdk"
     gem.requirements = "An environment variable 'BOE_JAVA_LIB' pointing to the Business Objects Java SDK directory"
-    gem.add_development_dependency "rspec", ">= 1.3.0"
+    gem.add_development_dependency "rspec", ">= 2.0.0"
     gem.add_development_dependency "yard", ">= 0.5.4"
   end
   Jeweler::GemcutterTasks.new
@@ -29,17 +29,12 @@ rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with gem install jeweler"
 end
 
-require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new(:spec) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.spec_files = FileList['spec/**/*_spec.rb']
-end
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new
 
 desc "Run specs with '--format specdoc'"
-Spec::Rake::SpecTask.new(:specdoc) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.spec_files = FileList['spec/**/*_spec.rb']
-  spec.spec_opts << '--format specdoc'
+RSpec::Core::RakeTask.new(:specdoc) do |spec|
+  spec.rspec_opts = ['--format specdoc']
 end
 
 task :spec => :check_dependencies
