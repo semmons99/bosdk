@@ -15,8 +15,11 @@ Gem::Specification.new do |s|
   s.add_development_dependency "rspec", ">= 2.0.0"
   s.add_development_dependency "yard"
 
-  s.files         = Dir.glob("{bin,lib}/**/*") + %w(README.md)
-  s.executables   = ["boirb"]
-  s.require_path  = "lib"
+  s.files =  Dir.glob("{bin,lib,spec}/**/*")
+  s.files += %w(README.md LICENSE)
+  s.files += %w(Rakefile .gemtest bosdk.gemspec)
+
+  s.executables  = ["boirb"]
+  s.require_path = "lib"
 end
 
